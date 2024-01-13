@@ -72,7 +72,7 @@ const MasterShop: FC = () => {
                 <IoMdCart color="#fff" size={45} />
               </button>
               <span className="absolute top-2 left-10 bg-red-600 rounded-full w-5 h-5 flex items-center justify-center text-center text-md text-white font-Yek-ExtraBold">
-              {numberConvertToPersian(CartContextMaster?.state?.itemsCounter)}
+              {numberConvertToPersian(CartContextMaster?.state.itemsCounter)}
               </span>
             </div>
           </Link>

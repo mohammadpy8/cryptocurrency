@@ -46,7 +46,7 @@ interface Action {
 
 type init = {
   selectedItems: stateType[]
-  itemsCounter: number
+  itemsCounter?: number | string
   total: number
   checkout: boolean
 }
@@ -67,7 +67,8 @@ const initialState = {
 
 const sumItem = (items: any) => {
   const itemsCounter = items.reduce(
-    (total: any, product: any) => total + product.quantity,
+    (total: any, product: any): string | number | undefined =>
+      total + product.quantity,
     0,
   )
   const total = items
