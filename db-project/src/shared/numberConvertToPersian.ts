@@ -1,9 +1,11 @@
-function numberConvertToPersian(number: number | string) {
+function numberConvertToPersian(number: number | string | undefined) {
   const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   const englishDigits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
+  if (number === undefined) {
+    return ""; 
+  }
   let convertedNumber = "";
-  const numberString = number.toString();
+  const numberString = number?.toString();
 
   for (let i = 0; i < numberString.length; i++) {
     const digit = numberString[i];

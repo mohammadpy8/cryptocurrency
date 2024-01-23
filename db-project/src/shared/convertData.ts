@@ -1,4 +1,4 @@
-const convertData = (data: number[][], type: any) => {
+const convertData = (data: [number[][]], type: any) => {
   if (!data || !data[type]) {
     console.error("Invalid data or type", data, type);
     return [];

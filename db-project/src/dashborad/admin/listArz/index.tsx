@@ -1,64 +1,72 @@
-import { FC, useEffect, useState } from 'react'
-import numberConvertToPersian from '../../../shared/numberConvertToPersian'
-import images from '../../../assets/images/btcadmin.png'
-import useLocalStorage from '../../../hooks/useLocalStorage'
-import CustomeModal from '../../../module/customModal'
-import { ThreeDots } from 'react-loader-spinner'
+import { FC, useEffect, useState } from "react";
+import numberConvertToPersian from "../../../shared/numberConvertToPersian";
+import images from "../../../assets/images/btcadmin.png";
+import useLocalStorage from "../../../hooks/useLocalStorage";
+import CustomeModal from "../../../module/customModal";
+import { ThreeDots } from "react-loader-spinner";
+
+type listArz = {
+  id: number;
+  title: string;
+  price: number;
+  status: string;
+  user: { full_name : string },
+};
 
 const ListArz = () => {
-  const getToken = useLocalStorage('', 'GET')
+  const getToken = useLocalStorage("", "GET");
 
-  const [listArzs, setListArzs] = useState<any>([])
-  const [idArz, setIdArz] = useState()
-  console.log(idArz)
+  const [listArzs, setListArzs] = useState<any>([]);
+  const [idArz, setIdArz] = useState<number>(0);
+  console.log(idArz);
 
-  const [changeModal, setChangeModal] = useState<any>(false)
-  console.log(listArzs)
+  const [changeModal, setChangeModal] = useState<any>(false);
+  console.log(listArzs);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/digital/currencies/', {
-      method: 'GET',
+    fetch("http://127.0.0.1:8000/digital/currencies/", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `JWT ${getToken}`,
       },
     })
       .then((res) => res.json())
-      .then((result) => setListArzs(result))
-  }, [])
+      .then((result) => setListArzs(result));
+  }, []);
 
   const AccessArzHandle = () => {
     fetch(`http://127.0.0.1:8000/digital/currencies/${idArz}/`, {
-      method: 'PATCH',
-      body: JSON.stringify({ status: 'a' }),
+      method: "PATCH",
+      body: JSON.stringify({ status: "a" }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `JWT ${getToken}`,
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result)
-        setChangeModal(!changeModal)
-      })
-  }
+        console.log(result);
+        setChangeModal(!changeModal);
+      });
+  };
 
   const cancelArzHandle = () => {
     fetch(`http://127.0.0.1:8000/digital/currencies/${idArz}/`, {
-      method: 'PATCH',
-      body: JSON.stringify({ status: 'n' }),
+      method: "PATCH",
+      body: JSON.stringify({ status: "n" }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `JWT ${getToken}`,
       },
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result)
-        setChangeModal(!changeModal)
-        window.location.reload()
-      })
-  }
+        console.log(result);
+        setChangeModal(!changeModal);
+        window.location.reload();
+      });
+  };
 
   return (
     <div className="p-9">
@@ -72,14 +80,14 @@ const ListArz = () => {
         </div>
         <div className="space-y-4">
           {listArzs.length > 0 ? (
-            listArzs.map((item: any) => {
+            listArzs.map((item: listArz) => {
               const {
                 title,
                 price,
                 status,
                 id,
                 user: { full_name },
-              } = item
+              } = item;
               return (
                 <div
                   className="bg-gray-100 rounded-xl p-4 flex justify-between items-center"
@@ -133,12 +141,12 @@ const ListArz = () => {
                     <h1 className="text-xl font-Yek-ExtraBlack text-gray-700">
                       وضعیت
                     </h1>
-                    {status === 'w' ? (
+                    {status === "w" ? (
                       <button
                         className="text-lg bg-primary-300 text-white font-Yek-SemiBold p-2 rounded-xl hover:ring-[6px] transition-all duration-300"
                         onClick={() => {
-                          setChangeModal(!changeModal)
-                          setIdArz(id)
+                          setChangeModal(!changeModal);
+                          setIdArz(id);
                         }}
                       >
                         در انتطار تایید
@@ -146,17 +154,17 @@ const ListArz = () => {
                     ) : (
                       <button
                         className={
-                          status === 'a'
-                            ? 'text-lg bg-green-500 text-white font-Yek-SemiBold p-2 rounded-xl'
-                            : 'text-lg bg-red-600 text-white font-Yek-SemiBold p-2 rounded-xl'
+                          status === "a"
+                            ? "text-lg bg-green-500 text-white font-Yek-SemiBold p-2 rounded-xl"
+                            : "text-lg bg-red-600 text-white font-Yek-SemiBold p-2 rounded-xl"
                         }
                       >
-                        {status === 'a' ? 'تایید شد' : 'رد شد'}
+                        {status === "a" ? "تایید شد" : "رد شد"}
                       </button>
                     )}
                   </div>
                 </div>
-              )
+              );
             })
           ) : (
             <div className="flex justify-center items-center">
@@ -198,7 +206,7 @@ const ListArz = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ListArz
+export default ListArz;

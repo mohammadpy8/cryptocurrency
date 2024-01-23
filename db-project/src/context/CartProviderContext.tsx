@@ -46,8 +46,7 @@ interface Action {
 
 type init = {
   selectedItems: stateType[]
-  itemsCounter?: number | string
-  total: number
+  itemsCounter?: number | string 
   checkout: boolean
 }
 

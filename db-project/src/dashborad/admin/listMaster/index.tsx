@@ -15,6 +15,13 @@ interface masterType {
   country: ''
 }
 
+interface typeMastrCart {
+  id: number,
+  title: string,
+  price: string,
+  country: ''
+}
+
 const ListMaster: FC = () => {
   const [changeModal, setChangeModal] = useState<any>(false)
   const [matserDetails, setMasterDetails] = useState<masterType>({
@@ -25,7 +32,7 @@ const ListMaster: FC = () => {
     country: '',
   })
 
-  const [listMasterCart, setListMasterCart] = useState<any>([])
+  const [listMasterCart, setListMasterCart] = useState<typeMastrCart[]>([])
   const [idMater, setIdMaster] = useState<number>(0)
   const [openMoDalDelete, setOpenModalDelete] = useState<any>(false)
 
@@ -115,7 +122,7 @@ const ListMaster: FC = () => {
         </div>
         <div className="space-y-4">
           {listMasterCart.length > 0 ? (
-            listMasterCart.map((item: any) => {
+            listMasterCart.map((item: typeMastrCart) => {
               const { id, title, price, country } = item
               return (
                 <div className="bg-gray-100 rounded-xl p-4 flex justify-between items-center">

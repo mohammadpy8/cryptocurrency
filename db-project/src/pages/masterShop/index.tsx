@@ -245,12 +245,12 @@ const MasterShop: FC = () => {
           </div>
         )}
       </div>
-      {/* <div className="flex justify-center mt-20 pb-10">
+      <div className="flex justify-center mt-20 pb-10">
         <button className="bg-[#4c20ff] flex text-white items-center gap-x-2 px-3 py-4 rounded-lg shadow-2xl hover:ring-[7px] ring-[#b5a3ff] transition-all duration-300">
           <span className="text-lg font-Yek-ExtraBold">محصولات بیشتر</span>
           <FaPlus color="#fff" size={15} />
         </button>
-      </div> */}
+      </div>
       <Toaster position="top-center" reverseOrder={false} />
     </div>
   )
