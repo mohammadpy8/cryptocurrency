@@ -11,7 +11,7 @@ type itemsData = {
 };
 
 const ListUsers: FC = () => {
-  const [users, setUsers] = useState<any>([]);
+  const [users, setUsers] = useState<itemsData[]>([]);
   console.log(users);
 
   const getToken = useLocalStorage("", "GET");

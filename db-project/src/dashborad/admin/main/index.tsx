@@ -3,13 +3,35 @@ import DatePickers from '../../../module/datePicker'
 import numberConvertToPersian from '../../../shared/numberConvertToPersian'
 import images from '../../../assets/images/btcadmin.png'
 import useLocalStorage from '../../../hooks/useLocalStorage'
-import ListUsers from '../listUsers'
 
 interface UserInfos {
   username?: string
   password?: string
   is_staff?: string
   full_name?: string
+}
+
+type itemsData = {
+  id: number
+  username: number
+  full_name: string
+  is_staff: string
+}
+
+interface masterType {
+  title: string
+  price: string
+  description: string
+  inventory: string
+  country: ''
+}
+
+type listArz = {
+  id: number
+  title: string
+  price: number
+  status: string
+  user: { full_name: string }
 }
 
 const MainAdminPanel: FC = () => {
@@ -19,9 +41,9 @@ const MainAdminPanel: FC = () => {
     is_staff: '',
     full_name: '',
   })
-  const [listMasterCart, setListMasterCart] = useState<any>([])
-  const [listArz, setListArzs] = useState<any>([])
-  const [users, setUsers] = useState<any>([])
+  const [listMasterCart, setListMasterCart] = useState<masterType[]>([])
+  const [listArz, setListArzs] = useState<listArz[]>([])
+  const [users, setUsers] = useState<itemsData[]>([])
 
   const getToken = useLocalStorage('', 'GET')
   console.log(getToken)

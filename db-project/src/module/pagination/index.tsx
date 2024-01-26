@@ -3,7 +3,7 @@ import styles from './Pagination.module.css'
 
 interface pagination {
   page: number
-  setPage: any
+  setPage: ((page: number | any) => void)
 }
 
 const Pagination: FC<pagination> = ({ page, setPage }) => {

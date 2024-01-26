@@ -23,7 +23,7 @@ interface typeMastrCart {
 }
 
 const ListMaster: FC = () => {
-  const [changeModal, setChangeModal] = useState<any>(false)
+  const [changeModal, setChangeModal] = useState<boolean>(false)
   const [matserDetails, setMasterDetails] = useState<masterType>({
     title: '',
     price: '',
@@ -34,7 +34,7 @@ const ListMaster: FC = () => {
 
   const [listMasterCart, setListMasterCart] = useState<typeMastrCart[]>([])
   const [idMater, setIdMaster] = useState<number>(0)
-  const [openMoDalDelete, setOpenModalDelete] = useState<any>(false)
+  const [openMoDalDelete, setOpenModalDelete] = useState<boolean>(false)
 
   const getToken = useLocalStorage('', 'GET')
 

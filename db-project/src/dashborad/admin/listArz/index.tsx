@@ -16,11 +16,11 @@ type listArz = {
 const ListArz = () => {
   const getToken = useLocalStorage("", "GET");
 
-  const [listArzs, setListArzs] = useState<any>([]);
+  const [listArzs, setListArzs] = useState<listArz[]>([]);
   const [idArz, setIdArz] = useState<number>(0);
   console.log(idArz);
 
-  const [changeModal, setChangeModal] = useState<any>(false);
+  const [changeModal, setChangeModal] = useState<boolean>(false);
   console.log(listArzs);
 
   useEffect(() => {

@@ -6,15 +6,23 @@ import CustomeModal from '../../../module/customModal'
 import toast from 'react-hot-toast'
 import { Toaster } from 'react-hot-toast'
 
+interface commentsTypes {
+  id: number
+  body: string
+  status: string
+  user: {
+    full_name: string
+  }
+}
 
 const ListComments: FC = () => {
-  const [listCommentsArz, setListCommentsArz] = useState<any>([])
-  const [listCommentsMaster, setListCommentsMaster] = useState<any>([])
+  const [listCommentsArz, setListCommentsArz] = useState<commentsTypes[]>([])
+  const [listCommentsMaster, setListCommentsMaster] = useState<commentsTypes[]>([])
   console.log(listCommentsArz)
-  const [changeModal, setChangeModal] = useState<any>(false)
+  const [changeModal, setChangeModal] = useState<boolean>(false)
   const [idArzComments, setIdArzComments] = useState<number>(0)
   const [idMasterComments, setIdMasterComments] = useState<number>(0)
-  const [openMasterModal, setOpenMasterModal] = useState<any>(false)
+  const [openMasterModal, setOpenMasterModal] = useState<boolean>(false)
 
   const getToken = useLocalStorage('', 'GET')
   useEffect(() => {

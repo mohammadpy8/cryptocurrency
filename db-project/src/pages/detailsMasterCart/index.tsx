@@ -16,12 +16,26 @@ import useLocalStorage from '../../hooks/useLocalStorage'
 import toast from 'react-hot-toast'
 import randomImages from '../../shared/randomImages'
 
+interface masterType {
+  title: string
+  price: string
+  description: string
+  inventory: string
+  country: ''
+}
+
+interface commentsTypes {
+  id: number
+  user: { full_name: string }
+  body: string
+}
+
 const DetailsMasterCart: FC = () => {
   const [masterOffer, setMasterOffer] = useState<number>(20)
   const [masterPrice, setMasterPrice] = useState<number>(1560000000)
   const [openSection, setOpenSection] = useState<boolean>(false)
   const [accordion, setAccordion] = useState<number>(0)
-  const [listMaster, setListMaster] = useState<any>([])
+  const [listMaster, setListMaster] = useState<masterType[]>([])
   const [body, setBody] = useState<string>('')
   const [listComments, setListComments] = useState<any>([])
   const navigate = useNavigate()
@@ -410,7 +424,7 @@ const DetailsMasterCart: FC = () => {
               </h1>
             </div>
             {listComments.length > 0 ? (
-              listComments.map((item: any) => {
+              listComments.map((item: commentsTypes) => {
                 const {
                   id,
                   user: { full_name },

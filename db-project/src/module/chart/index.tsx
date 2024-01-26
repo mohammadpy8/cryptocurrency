@@ -31,7 +31,7 @@ const Chart: FC<Chart> = ({ setChart, chart, setOpenChart, openCharts }) => {
   const [type, setType] = useState<any>('prices')
   console.log(chart)
 
-  console.log(convertData(chart, type))
+  // console.log(convertData(chart, type))
 
   return (
     <div className="z-[150000000000]">
@@ -45,8 +45,8 @@ const Chart: FC<Chart> = ({ setChart, chart, setOpenChart, openCharts }) => {
               </button>
             </div>
             <div className='flex items-center gap-x-4 text-xl font-Yek-Bold'>
-              <img src={chart.coin?.image} alt="image" className='w-12'/>
-              <p>{chart.coin?.name}</p>
+              <img src={chart?.coin?.image} alt="image" className='w-12'/>
+              <p>{chart?.coin?.name}</p>
             </div>
             <div className="w-[760px] h-[300px] mt-6 px-auto">
               <ResponsiveContainer width="100%" height="100%">
